@@ -1,6 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import { pool } from './config/database.js';
+import tripRoutes from './routes/trips.js'
+
 
 // creates an express app
 const app = express();
@@ -10,6 +12,9 @@ app.use(express.json());
 
 // adds CORS middleware to allow cross-origin requests
 app.use(cors());
+
+// /trips endpoint should use the tripRoutes router for handling requests
+app.use('/api/trips', tripRoutes);
 
 // creates a router handler for a GET request at / that responds with a status code 200 and an h1 element
 app.get('/', (req, res) => {
