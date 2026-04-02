@@ -4,7 +4,10 @@
   "description": "",
   "main": "server/server.js",
   "type": "module",
-  "scripts": {"start": "npx nodemon server/server.js"},
+  "scripts": {
+    "start": "npm run reset && nodemon --require dotenv/config server/server.js",
+    "reset": "cd server/config && node --require dotenv/config reset.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/BrandonnGonzalez/onthefly.git"
