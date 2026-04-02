@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import { pool } from './config/database.js';
 
 // creates an express app
 const app = express();
@@ -16,7 +17,17 @@ app.get('/', (req, res) => {
 });
 
 
+
+
 const PORT = process.env.port || 3001;
+
+pool.query('SELECT NOW()', (err, res) => {
+    if (err) {
+        console.error('Database connection failed:', err.message);
+    } else {
+        console.log('Database connected successfully at:', res.rows[0].now);
+    }
+});
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
