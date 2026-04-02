@@ -1,0 +1,26 @@
+{
+  "name": "onthefly",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/server.js",
+  "type": "module",
+  "scripts": {"start": "npx nodemon server/server.js"},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrandonnGonzalez/onthefly.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BrandonnGonzalez/onthefly/issues"
+  },
+  "homepage": "https://github.com/BrandonnGonzalez/onthefly#readme",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.0",
+    "express": "^5.2.1",
+    "nodemon": "^3.1.14",
+    "pg": "^8.20.0"
+  }
+}

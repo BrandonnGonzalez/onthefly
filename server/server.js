@@ -1,0 +1,23 @@
+import express from 'express';
+import cors from 'cors';
+
+// creates an express app
+const app = express();
+
+// adds express.json() middleware to parse JSON data from HTTP requests
+app.use(express.json());
+
+// adds CORS middleware to allow cross-origin requests
+app.use(cors());
+
+// creates a router handler for a GET request at / that responds with a status code 200 and an h1 element
+app.get('/', (req, res) => {
+    res.status(200).send('<h1 style="text-align: center; margin-top: 50px;">Welcome to On The Fly API!</h1>');
+});
+
+
+const PORT = process.env.port || 3001;
+
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+});
