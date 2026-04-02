@@ -18,10 +18,10 @@ On The Fly is a travel planning REST API that allows users to manage trips, dest
 ```
 onthefly/
 ├── package.json
-└── server/
+└── server/                     # Endpoints and their respective routers are declared here using app.use()
     ├── server.js               # Express app entry point
     ├── .env                    # Environment variables (not committed)
-    ├── routes/
+    ├── routes/                 # Routes are declared here to be able to connect the controller SQL functions to actual HTTP requests/paths
     │   ├── trips.js
     │   ├── activities.js
     │   ├── destinations.js
@@ -32,7 +32,7 @@ onthefly/
         ├── reset.js            # Table creation and seed script
         ├── data/
         │   └── data.json       # Seed data for trips
-        └── controllers/
+        └── controllers/        # Where the SQL queries are written to connect to the postgres database
             ├── trips.js
             ├── activities.js
             ├── destinations.js
