@@ -41,6 +41,62 @@ onthefly/
 
 ## Database Schema
 
+```mermaid
+erDiagram
+    trips {
+        serial id PK
+        varchar title
+        varchar description
+        text img_url
+        integer num_days
+        date start_date
+        date end_date
+        money total_cost
+    }
+
+    destinations {
+        serial id PK
+        varchar destination
+        varchar description
+        varchar city
+        varchar country
+        text img_url
+        text flag_img_url
+    }
+
+    activities {
+        serial id PK
+        int trip_id FK
+        varchar activity
+        integer num_votes
+    }
+
+    trips_destinations {
+        int trip_id FK
+        int destination_id FK
+    }
+
+    users {
+        serial id PK
+        integer githubid
+        varchar username
+        varchar avatarurl
+        varchar accesstoken
+    }
+
+    trips_users {
+        int trip_id FK
+        int user_id FK
+    }
+
+    trips ||--o{ activities : "has"
+    trips ||--o{ trips_destinations : "belongs to"
+    destinations ||--o{ trips_destinations : "belongs to"
+    trips ||--o{ trips_users : "belongs to"
+    users ||--o{ trips_users : "belongs to"
+```
+
+
 ### trips
 | Column | Type | Constraints |
 |---|---|---|
