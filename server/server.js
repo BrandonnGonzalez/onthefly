@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(cors());
 
 // /trips endpoint should use the tripRoutes router for handling requests
-app.use('/api/trips', tripRoutes);
+app.use('/trips', tripRoutes);
 
 // creates a router handler for a GET request at / that responds with a status code 200 and an h1 element
 app.get('/', (req, res) => {

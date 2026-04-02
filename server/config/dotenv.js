@@ -1,3 +1,6 @@
 import dotenv from 'dotenv';
-// configures dotenv to read from a .env file in the server directory
-dotenv.config({ path: '../.env' });
+import { fileURLToPath } from 'url';
+import path from 'path';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+dotenv.config({ path: path.join(__dirname, '../.env') });
