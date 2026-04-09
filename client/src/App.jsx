@@ -12,53 +12,57 @@ import AddToTrip from './pages/AddToTrip';
 
 
 const App = () => {
-  
+
   const [trips, setTrips] = useState([]);
   const [destinations, setDestinations] = useState([]);
 
   useEffect(() => {
-
-
+    const fetchTrips = async () => {
+      const response = await fetch('http://localhost:3001/trips');
+      const data = await response.json();
+      setTrips(data);
+    }
+    fetchTrips();
   }, []);
 
   // Sets up routes
   let element = useRoutes([
     {
       path: "/",
-      element:<ReadTrips data={trips}/>
+      element: <ReadTrips data={trips} />
     },
     {
-      path:"/trip/new",
+      path: "/trip/new",
       element: <CreateTrip />
     },
     {
-      path:"/edit/:id",
+      path: "/edit/:id",
       element: <EditTrip data={trips} />
     },
     {
-      path:"/destinations",
+      path: "/destinations",
       element: <ReadDestinations data={destinations} />
     },
     {
-      path:"/trip/get/:id",
+      path: "/trip/get/:id",
       element: <TripDetails data={trips} />
     },
     {
-      path:"/destination/new/:trip_id",
+      path: "/destination/new/:trip_id",
       element: <CreateDestination />
     },
     {
-      path:"/activity/create/:trip_id",
+      path: "/activity/create/:trip_id",
       element: <CreateActivity />
     },
     {
-      path:"/destinations/add/:destination_id",
-      element: <AddToTrip data={trips}/>
+      path: "/destinations/add/:destination_id",
+      element: <AddToTrip data={trips} />
     }
   ]);
 
-  
-  return ( 
+
+  return (
 
     <div className="App">
 
@@ -69,7 +73,7 @@ const App = () => {
         <Link to="/destinations"><button className="headerBtn">Explore Destinations</button></Link>
         <Link to="/trip/new"><button className="headerBtn"> + Add Trip </button></Link>
       </div>
-        {element}
+      {element}
     </div>
 
   );
