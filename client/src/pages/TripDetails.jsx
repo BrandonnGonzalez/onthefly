@@ -13,6 +13,22 @@ const TripDetails = ({ data }) => {
                 setTrip(result[0]);
             }
         }
+
+        const fetchActivites = async () => {
+            const response = await fetch(`http://localhost:3001/activities/${id}`)
+            const data = response.json()
+            setActivities(data)
+
+        }
+
+        const fetchDestinations = async () => {
+            const response = await fetch(`http://localhost:3001/trips_destinations/destinations/${id}`)
+            const data = response.json()
+            setDestinations(data)
+        }
+
+
+
     }, [data, id]);
 
     if (!trip) {
