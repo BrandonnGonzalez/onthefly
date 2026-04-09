@@ -28,7 +28,7 @@ const CreateDestination = () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(destination)
             }
-            const response = await fetch('http://localhost:3001/destinations/create', options)
+            const response = await fetch('http://localhost:3001/destinations', options)
             const data = await response.json();
             setDestination(data);
             return data.id;
@@ -40,7 +40,7 @@ const CreateDestination = () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ trip_id: trip_id, destination_id: destination_id })
             }
-            const response = await fetch(`http://localhost:3001/trip-destinations/create`, options)
+            const response = await fetch(`http://localhost:3001/trips_destinations`, options)
             const data = await response.json();
             return data
 
