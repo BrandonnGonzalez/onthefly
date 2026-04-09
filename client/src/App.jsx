@@ -22,7 +22,14 @@ const App = () => {
       const data = await response.json();
       setTrips(data);
     }
+
+    const fetchDestinations = async () => {
+      const response = await fetch('http://localhost:3001/destinations');
+      const data = await response.json();
+      setDestinations(data);
+    }
     fetchTrips();
+    fetchDestinations();
   }, []);
 
   // Sets up routes
