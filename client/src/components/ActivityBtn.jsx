@@ -1,17 +1,29 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import './ActivityBtn.css'
 
-const ActivityBtn = (props) =>  {
+const ActivityBtn = (props) => {
 
   const [num_votes, setNumVotes] = useState(props.num_votes)
 
-  const updateCount = () => {
+  const updateCount = async () => {
+    const options = {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ num_votes: num_votes + 1 }),
+    }
+
+    const response = await fetch(`http://localhost:3001/activities/${props.id}`, options);
+    const data = await response.json();
+    console.log(data);
+    setNumVotes(num_votes + 1);
 
   }
 
   return (
     <button className='activityBtn' id={props.id} onClick={updateCount}>
-      {props.activity} <br/> {'△ ' + num_votes + ' Upvotes' }
+      {props.activity} <br /> {'△ ' + num_votes + ' Upvotes'}
     </button>
   )
 
