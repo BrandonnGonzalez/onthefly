@@ -42,7 +42,7 @@ const getTrip = async (req, res) => {
 }
 
 const updateTrip = async (req, res) => {
-    const { id } = parseInt(req.params.id);
+    const id = parseInt(req.params.id);
     const { title, description, img_url, num_days, start_date, end_date, total_cost } = req.body
 
     try {
